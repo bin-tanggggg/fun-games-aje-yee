@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tebak Jodoh 🔮</title>
+<style>
+  body {
+    background-color: #ede7f6;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 30px 15px;
+  }
+  h1 { color: #4527a0; }
+  input {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 2px solid #b39ddb;
+  }
+  button {
+    background-color: #7e57c2;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+  }
+  #hasil {
+    white-space: pre-line;
+    background-color: white;
+    max-width: 400px;
+    margin: 25px auto;
+    padding: 20px;
+    border-radius: 15px;
+    font-size: 18px;
+    color: #311b92;
+  }
+</style>
+</head>
+<body>
+
+<h1>Tebak Jodoh 🔮</h1>
+<p>Ketik nama lo, biar bola kristal yang jawab.</p>
+<input id="nama" placeholder="Nama lo...">
+<button onclick="ramal()">Ramal! ✨</button>
+<div id="hasil"></div>
+
+<script>
+  var ciri = [
+    "suka telat tapi selalu bawa oleh-oleh",
+    "jago masak mie instan",
+    "punya tawa yang kedengeran sampai ujung gang",
+    "sering ngilang pas disuruh bayar patungan",
+    "pendiam, tapi ternyata lucu banget kalau udah akrab",
+    "hobi rebahan dan jago nyari alasan"
+  ];
+
+  var pertemuan = [
+    "di antrean gorengan",
+    "pas sama-sama kehabisan paket data",
+    "di warung kopi yang colokannya cuma satu",
+    "lewat salah kirim chat",
+    "di acara nikahan orang lain"
+  ];
+
+  var tips = [
+    "Sering-sering traktir dia.",
+    "Jangan telat bales chat.",
+    "Siapin sabar yang banyak.",
+    "Mulai rajin olahraga dari sekarang.",
+    "Belajar masak, itu poin plus."
+  ];
+
+  function pilih(daftar) {
+    var acak = Math.floor(Math.random() * daftar.length);
+    return daftar[acak];
+  }
+
+  function ramal() {
+    var nama = document.getElementById("nama").value;
+    if (nama == "") {
+      alert("Isi nama dulu ya!");
+      return;
+    }
+    var persen = Math.floor(Math.random() * 101);
+    var teks = "Ramalan untuk " + nama + " 🔮\n\n" +
+      "Jodoh lo orangnya " + pilih(ciri) + ".\n" +
+      "Kalian ketemu " + pilih(pertemuan) + ".\n" +
+      "Tingkat kecocokan: " + persen + "%\n\n" +
+      "Tips: " + pilih(tips);
+    document.getElementById("hasil").innerText = teks;
+  }
+  ramal();
+</script>
+
+</body>
+</html>
